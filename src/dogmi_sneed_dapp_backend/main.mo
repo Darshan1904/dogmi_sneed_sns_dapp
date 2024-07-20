@@ -98,6 +98,7 @@ shared ({ caller = _initializer_ }) actor class SneedConverter() : async T.Conve
         canister_id = Principal.toText(Principal.fromActor(this));
       };
     };
+    
 
 // PRIVATE FUNCTIONS
 

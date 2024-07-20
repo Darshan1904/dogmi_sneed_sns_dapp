@@ -1,41 +1,21 @@
 {
   "canisters": {
-    "sneed_dapp_backend": {
-      "main": "src/sneed_dapp_backend/main.mo",
+    "dogmi_sneed_dapp_backend": {
+      "main": "src/dogmi_sneed_dapp_backend/main.mo",
       "type": "motoko"
     },
-    "sneed_dapp_frontend": {
+    "dogmi_sneed_dapp_frontend": {
       "dependencies": [
-        "sneed_dapp_backend"
+        "dogmi_sneed_dapp_backend"
       ],
       "frontend": {
-        "entrypoint": "src/sneed_dapp_frontend/src/index.html"
+        "entrypoint": "src/dogmi_sneed_dapp_frontend/src/index.html"
       },
       "source": [
-        "src/sneed_dapp_frontend/assets",
-        "dist/sneed_dapp_frontend/"
+        "src/dogmi_sneed_dapp_frontend/assets",
+        "dist/dogmi_sneed_dapp_frontend/"
       ],
       "type": "assets"
-    },
-    "sneed_dapp_tests": {
-      "main": "tests/tests.mo",
-      "type": "motoko"
-    },
-    "sneed_dapp_old_token_mock": {
-      "main": "tests/mocks/TokenCanisterMock.mo",
-      "type": "motoko"
-    },
-    "sneed_dapp_new_token_mock": {
-      "main": "tests/mocks/TokenCanisterMock.mo",
-      "type": "motoko"
-    },
-    "sneed_dapp_old_indexer_mock": {
-      "main": "tests/mocks/OldIndexerCanisterMock.mo",
-      "type": "motoko"
-    },
-    "sneed_dapp_new_indexer_mock": {
-      "main": "tests/mocks/NewIndexerCanisterMock.mo",
-      "type": "motoko"
     }
   },
   "defaults": {

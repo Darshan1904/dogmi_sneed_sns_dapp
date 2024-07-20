@@ -47,9 +47,9 @@ type ConverterPersistentState = {
     var stable_cooldowns : [(Principal, Time.Time)];
     var stable_log : [LogItem];
 
-    var old_token_canister : TokenInterface;
+    var old_token_canister : OldToken;
     var old_indexer_canister : OldIndexerInterface;
-    var new_token_canister : TokenInterface;
+    var new_token_canister : ICRC1;
     var new_indexer_canister : NewIndexerInterface; 
 
     var settings : Settings;
@@ -101,9 +101,11 @@ type NewTransaction = {
     timestamp : Nat64;
 };
 
+type BlockIndex = Nat;
+
 type NewIndexerRequest = {
     max_results : Nat;
-    start : ?Nat;
+    start : ?BlockIndex;
     account : Account;
 };
 
@@ -377,7 +379,7 @@ type ConverterInterface = actor {
 };
 
 type OldIndexerInterface = actor {
-    get_account_transactions(account : Text) : async [OldTransaction];
+    get_account_transactions(request : NewIndexerRequest) : async GetNewTransactionsResult;
     synch_archive_full(token: Text) : async OldSynchStatus;
 };  
 
@@ -388,4 +390,73 @@ type NewIndexerInterface = actor {
 type TokenInterface = actor {
     icrc1_transfer(args : TransferArgs) : async TransferResult;
     burn(args : BurnArgs) : async TransferResult;    
+};
+
+type Duration = Nat64;
+
+type myTransferError = {
+    #BadFee : { expected_fee : Nat };
+    #BadBurn : { min_burn_amount : Nat };
+    #InsufficientFunds : { balance : Nat };
+    #TooOld;
+    #CreatedInFuture : { ledger_time : Timestamp };
+    #Duplicate : { duplicate_of : Nat };
+    #TemporarilyUnavailable;
+    #GenericError : { error_code : Nat; message : Text };
+};
+
+type Value = {
+    #Nat : Nat;
+    #Int : Int;
+    #Text : Text;
+    #Blob : Blob;
+};
+
+type Tokens = Nat;
+
+type TxKind = {
+    #Burn;
+    #Mint;
+    #Transfer;
+};
+
+type TransactionView = {
+    amount : Tokens;
+    fee : Tokens;
+    from : Text;
+    kind : TxKind;
+    timestamp : Timestamp;
+    to : Text;
+};
+
+type OldToken = actor {
+    icrc1_metadata : query () -> async [(Text, Value)];
+    icrc1_name : query () -> async Text;
+    icrc1_symbol : query () -> async Text;
+    icrc1_decimals : query () -> async Nat8;
+    icrc1_fee : query () -> async Nat;
+    icrc1_total_supply : query () -> async Nat;
+    icrc1_minting_account : query () -> async ?Account;
+    icrc1_balance_of : query (Account) -> async Nat;
+    icrc1_transfer : (TransferArgs) -> async { #Ok : Nat; #Err : TransferError };
+    icrc1_supported_standards : query () -> async [{ name : Text; url : Text }];
+    transaction : shared query (Nat, Nat) -> async {
+        content : [TransactionView];
+        limit : Nat;
+        offset : Nat;
+        totalElements : Nat;
+    };
+};
+
+type ICRC1 = actor {
+    icrc1_metadata : query () -> async [(Text, Value)];
+    icrc1_name : query () -> async Text;
+    icrc1_symbol : query () -> async Text;
+    icrc1_decimals : query () -> async Nat8;
+    icrc1_fee : query () -> async Nat;
+    icrc1_total_supply : query () -> async Nat;
+    icrc1_minting_account : query () -> async ?Account;
+    icrc1_balance_of : query (Account) -> async Nat;
+    icrc1_transfer : (TransferArgs) -> async { #Ok : Nat; #Err : TransferError };
+    icrc1_supported_standards : query () -> async [{ name : Text; url : Text }];
 };

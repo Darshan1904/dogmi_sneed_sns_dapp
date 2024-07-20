@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>DOGMI Sneed Token Transfer</title>
+    <base href="/" />
+    <link rel="icon" href="favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@5/distr/fira_code.css"
+    />
+    <link rel="stylesheet" href="main.css" />
+  </head>
+
+  <body>
+    <main>
+      <img src="dogwithcoin.png" alt="DOGMI Token Conversion logo" />
+      <h1>DOGMI Sneed Token Transfer (Test version original app will be deployed after sns launch)</h1>
+      <p>Application Status: <span id="dapp_status" class="blink">Loading...</span></p>
+      <div id="main_div" class="inactive">
+        <p>1) Send OLD (non-SNS) DOGMI to: <span id="dapp_id" class="highlight"></span></p>
+        <p>Please note this operation may take up to a few minutes to complete.</p>
+        <p class="warning">
+          <b>Warning:</b> Tokens sent to this principal will not be refundable!
+        </p>
+        <p>
+          The only use of this application is for converting OLD (non-SNS) DOGMI into NEW (SNS) DOGMI!
+        </p>
+        <p class="warning">
+          Do not send ANY tokens to this principal other than OLD (non-SNS) DOGMI, as they will be lost (not refundable)!
+        </p>
+        <p>2) Check your balance: (It will take around 2 minutes)</p>
+        <form action="#">
+          <label for="account">Principal:</label>
+          <input id="account" alt="Principal" type="text" />
+          <!-- <label for="subaccount">Subaccount (optional):</label> -->
+          <input id="subaccount" alt="Subaccount" type="text" />
+          <button type="submit" id="submit_button" disabled>Check Balance</button>
+        </form>
+        <section id="balance"></section>
+        <p>3) Convert your OLD (non-SNS) DOGMI to NEW (SNS) DOGMI:</p>
+        <p>Please note this operation may take up to a few minutes to complete.</p>
+        <input id="convert" type="button" value="Convert" disabled/>
+        <section id="result"></section>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,25 +1,10 @@
 {
-  "sneed_dapp_backend": {
-    "ic": "5ceyv-syaaa-aaaag-qc43q-cai",
+  "dogmi_sneed_dapp_backend": {
+    "ic": "kw5rk-raaaa-aaaai-qpfoa-cai",
     "local": "bd3sg-teaaa-aaaaa-qaaba-cai"
   },
-  "sneed_dapp_frontend": {
-    "ic": "4pk43-5qaaa-aaaag-qc44a-cai",
+  "dogmi_sneed_dapp_frontend": {
+    "ic": "kr4x6-4yaaa-aaaai-qpfoq-cai",
     "local": "bkyz2-fmaaa-aaaaa-qaaaq-cai"
-  },
-  "sneed_dapp_new_indexer_mock": {
-    "local": "be2us-64aaa-aaaaa-qaabq-cai"
-  },
-  "sneed_dapp_new_token_mock": {
-    "local": "br5f7-7uaaa-aaaaa-qaaca-cai"
-  },
-  "sneed_dapp_old_indexer_mock": {
-    "local": "bw4dl-smaaa-aaaaa-qaacq-cai"
-  },
-  "sneed_dapp_old_token_mock": {
-    "local": "b77ix-eeaaa-aaaaa-qaada-cai"
-  },
-  "sneed_dapp_tests": {
-    "local": "by6od-j4aaa-aaaaa-qaadq-cai"
   }
 }

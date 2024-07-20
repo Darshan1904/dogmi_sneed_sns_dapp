@@ -1,102 +1,150 @@
-name: Sneed
+# You should make a copy of this file, name it sns_init.yaml, and edit it to
+# suit your needs.
+#
+# All principal IDs should almost certainly be changed.
+#
+# In this file, 1 year is nominally defined to be 365.25 days.
+#
+# This gets passed to `sns propose`. See propose_sns.sh.
+#
+# This follows the second configuration file format developed for the `sns`
+# CLI. The first format will be supported for a time, but this format will
+# eventually become the standard format.
+# ------------------------------------------------------------------------------
+# UNITS
+#
+# This SNS configuration file version allows specifying the various
+# fields with units that make configuration easier. For instance,
+# in the previous version, all fields relating to token values
+# had to be specified in e8s (fractions of 10E-8 of a governance token).
+# In this version, similar fields can be specified in whole tokens,
+# tokens with decimals, or e8s. Below is more information on the type
+# of units that can be used.
+#
+# For fields that represent token values (such as `transaction_fee`
+# or `rejection_fee`), devs can specify decimal strings ending in
+# "tokens" (plural), decimal strings ending in "token" (singular),
+# or integer strings (base 10) ending in "e8s". In the case of
+# "tokens" strings, the maximum number of digits after the (optional)
+# decimal point is 8. The "_" character may be sprinkled throughout.
+# Whitespace around number is insignificant. E.g. " 42 tokens" is
+# equivalent to "42tokens".
+#
+# For fields that represent duration values (such as `initial_voting_period`
+# or `minimum_dissolve_delay`), devs can specify durations as a concatenation
+# of time spans. Where each time span is an integer number and a suffix.
+# Supported suffixes:
+#  - seconds, second, sec, s
+#  - minutes, minute, min, m
+#  - hours, hour, hr, h
+#  - days, day, d
+#  - weeks, week, w
+#  - months, month, M -- defined as 30.44 days
+#  - years, year, y -- defined as 365.25 days
+#
+# For example, "1w 2d 3h" gets parsed as
+#
+# 1 week + 2 days + 3 hours
+#    =
+# (1 * (7 * 24 * 60 * 60) + 2 * 24 * 60 * 60 + 3 * (60 * 60)) seconds
+#
+# For fields that represent percentage values (such as `bonus`), devs specify
+# the value as an integer with a trailing percent sign ('%'). For example,
+# `10%`.
+#
+# For fields that represent time of day (such as `start_time`), devs specify
+# the value as a string in form "hh::mm UTC". Where hh is hour, and mm is minute.
+# Only the UTC timezone is currently supported.
+# ------------------------------------------------------------------------------
 
+
+# Name of the SNS project. This may differ from the name of the associated
+# token. Must be a string of max length = 255.
+name: DOGMI
+
+
+# Description of the SNS project.
+# Must be a string of max length = 2,000.
 description: >
-    A 'blank canvas' DAO designed to enable the community to innovate, Sneed offers an accessible, open platform for creative and technological exploration on the Internet Computer Protocol.
+    DOGMI is an ICP memecoin that aims to bolster the ICP ecosystem through innovative and engaging marketing strategies decided by the community.
 
-# This is currently a placeholder field and must be left empty for now.
-Principals: []
 
-# Token logo
+# Path to the SNS Project logo on the local filesystem. The path is relative
+# to the configuration file's location, unless an absolute path is given.
+# Must have less than 341,334 bytes. The only supported format is PNG.
 logo: logo.png
 
+
 # URL to the dapp controlled by the SNS project.
-url: https://4pk43-5qaaa-aaaag-qc44a-cai.icp0.io/
+# Must be a string from 10 to 512 bytes.
+url: https://qu2gy-uqaaa-aaaal-qcv6a-cai.icp0.io
+
+
+Principals: []
 
 # Metadata for the NNS proposal required to create the SNS. This data will be
 # shown only in the NNS proposal.
 NnsProposal:
-    # The title of the NNS proposal.
-    title: "NNS Proposal to create an SNS DAO named 'Sneed DAO'"
+    # The title of the NNS proposal. Must be a string of 4 to 256 bytes.
+    title: "NNS Proposal to create an SNS named DOGMI"
+
 
     # The HTTPS address of additional content required to evaluate the NNS
     # proposal.
-    url: "https://forum.dfinity.org/t/proposal-to-create-an-sns-dao-for-sneed/24975"
+    url: "https://forum.dfinity.org/t/dogmi-sns-dao-launch/32060"
 
-    # The description of the proposal. 
-    summary: |
-        **I. Vision and Purpose**
 
-        The core vision of Sneed DAO is to provide a community-driven ‘blank canvas’ model SNS DAO (as pioneered by SNS-1) to the ICP community and ecosystem.
-        This model enables ICP community members and developers from all over the world to join and participate in shaping the DAO through proposals covering anything from new technological solutions to community-building projects, following the motto ‘by the community, for the community’.
-        For more details please read our full SNS proposal posted on the DFINITY forums (please see link above).
+    # The description of the proposal. Must be a string of 10 to 2,000 bytes.
+    summary: >
+        # Summary
 
-        *dApp:*
+        This is the proposal for the NNS to create an SNS DAO for DOGMI.
 
-        The Sneed converter dApp lets users convert their OLD Sneed tokens (currently in circulation) to the NEW Sneed DAO token, created for the Sneed SNS. 
+        # Purpose
 
-        **II. Token Distribution**
+        DOGMI is an ICP memecoin that aims to bolster the ICP ecosystem through innovative and engaging marketing strategies decided by the community.
 
-        *Token Details:*
+        It was launched in September 2022, to create a community of ICP enthusiast willing to drive marketing and PR strategies to attract newcomers to the ecosystem.
 
-        * Token name: Sneed DAO
-        * Token symbol: SNEED
-        * Total token supply: 10,000 SNEED
-        * Token distribution: 85% treasury, 10% decentralization sale, 5% Sneed founding team.
-        * SNS ledger transaction fee: 0.00001 SNEED
-        * Sneed dApp canister: 5ceyv-syaaa-aaaag-qc43q-cai
+        Token Name: DOGMI
+        Token Symbol: DOGMI
+        Total Token Supply: 24_669_696_942.785 tokens
 
-        Important note regarding token distribution! 
+        Token distribution:
 
-        The 85% treasury, 10% decentralization sale, 5% Sneed founding team allocation is the starting distribution specified by the SNS initialization parameters. 
-        Because there is already an existing OLD Sneed token in circulation which will be convertible 1:1 (minus transaction fees) to the NEW Sneed DAO token created for the SNS, the following will end up becoming the actual allocation:
+        79.39%: Held by the community, airdropped post-SNS via 10000:1 ratio swap
+        5%: All Liquid, SNS Swap, 1 neuron with no dissolve delay
+        1.6%: Allocated to the DOGMI team, locked for 6 months
+        9.01%: Reserved for the SNS Treasury & under control of the DAO.
+        5%: Reserved for future SNS sales, extra burning, or other future purposes.
 
-        19.5% treasury, 10% decentralization sale, 10% Sneed founding team, 60.1% Sneed converter dApp, and about 0.4% Burned. 
+        Transaction fee: 50 DOGMI
 
-        The reason is that a majority of the NEW Sneed DAO tokens in the treasury will be sent to the Sneed converter dApp, so that holders of the OLD Sneed token can convert them to the NEW Sneed DAO token. 
-        The Sneed founding team will (after burning 500 of their OLD Sneed tokens) own 500 OLD Sneed tokens and 500 NEW Sneed DAO tokens. 
-        After converting their OLD Sneed tokens to NEW Sneed DAO tokens, the Sneed founding team will end up with 1,000 NEW Sneed DAO tokens, or 10% of the supply. 
-        500 of the Sneed founding team's NEW Sneed DAO tokens will be locked in a neuron with 8 months vesting time and 1 month dissolve delay, and 500 will not be locked. 
+        More information on the Whitepaper: https://drive.google.com/file/d/1FSvrZDsZOw330BuiIwEEQ-h5aL2NPwNk/view
 
-        **III. Governance and Token Management**
+        # Governance
 
-        Post-sale, the Sneed Team will propose a series of actions:
-        * Burn a corresponding amount of NEW Sneed DAO tokens as have been burnt from the OLD Sneed token supply (about 40 SNEED).
-        * Burn the OLD Sneed token reserve (1,950 OLD Sneed in treasury, 1,000 OLD Sneed reserved for the SNS sale). 
-        * Burn 500 of the 1,000 OLD Sneed tokens owned by the Sneed founding team. 
-        * Send about 6,510 NEW Sneed DAO tokens (6,550 minus the amount of NEW Sneed DAO tokens burned in previous step) to the Sneed converter dApp, leaving 1,950 NEW Sneed DAO tokens in the SNS treasury (matching OLD Sneed token treasury).
+        Each decentralization sale participant will receive their tokens in 2 liquid neuron.
 
-        Burning 3,450 OLD Sneed tokens, and with about 40 OLD Sneed tokens already burned, gives 3,490 OLD Sneed tokens burned in total. This leaves about 6,510 OLD Sneed tokens in circulation. This matches the amount of NEW Sneed DAO tokens sent to the converter dApp, ensuring that all OLD Sneed tokens can be converted 1:1 (minus transaction fees) to new Sneed DAO tokens using the Sneed converter dApp. 
+        # Future Steps
 
-        *Governance Parameters:*
+        Additional sales and projects may occur depending on DAO decisions.
 
-        * Minimum stake: 0.01 SNEED
-        * Minimum dissolve delay for voting: 1 Month
-        * Maximum dissolve delay for bonus: 6 Months
-        * Voting Rewards: 0% 
-        * Maximum dissolve delay vp bonus (for 6 Months): 100%
-        * Maximum age for age bonus: 1 year
-        * Maximum age bonus: 25%
+        We appreciate your continued support. 
+        
+        Dogs GMI!
 
-        **IV. Decentralization Sale**
 
-        * Minimum participants: 10
-        * Minimum participation: 1 ICP
-        * Maximum participation: 3000 ICP
-        * Minimum to be raised: 100 ICP
-        * Maximum to be raised: 30,000 ICP
-        * Community Fund Participation: 0 ICP
-        * Sale duration: 7 days
-        * Sale delay: 0 days
-        * Number of neurons: 2
-        * Dissolve delay of neurons: 0 and 30 days 
-        * Restricted_countries:
-        US, KP, CU, SD, SY, IR, VE
 # If the SNS launch attempt fails, control over the dapp canister(s) is given to
 # these principals. In most use cases, this is chosen to be the original set of
 # controller(s) of the dapp. Must be a list of PrincipalIds.
 fallback_controller_principals:
-    # principal of the intended fallback controller
-    [d7zib-qo5mr-qzmpb-dtyof-l7yiu-pu52k-wk7ng-cbm3n-ffmys-crbkz-nae] #NNS -> my canister
+    # For the actual SNS launch, you should replace this with one or more
+    # principals of your intended fallback controllers.
+    #
+    # For testing, propose_sns.sh will fill this in automatically.
+    - 5hu2o-3qfha-sbrjh-ezbhr-xrbvv-2wnt3-zblz4-l3xzi-ywbdu-xyxez-cqe
+
 
 # The list of dapp canister(s) that will be decentralized if the
 # decentralization swap succeeds. These are defined in the form of canister IDs,
@@ -106,23 +154,41 @@ fallback_controller_principals:
 # create an SNS is adopted (usually this is required even earlier, e.g., to
 # convince NNS neurons to vote in favor of your proposal).
 dapp_canisters:
-    # canister ID of the to-be-decentralized dapp
-    [5ceyv-syaaa-aaaag-qc43q-cai]
+    # For the actual SNS launch, you should replace this with one or more
+    # IDs of the canisters comprising your to-be-decentralized dapp.
+    #
+    # For testing, propose_sns.sh will fill this in automatically.
+    - qu2gy-uqaaa-aaaal-qcv6a-cai
+
+    # Dogmi Sneed Tokwen Swap backend canister 
+    - kw5rk-raaaa-aaaai-qpfoa-cai
+
+    # Dogmi Sneed Tokwen Swap frontend canister
+    - kr4x6-4yaaa-aaaai-qpfoq-cai
+
 
 # Configuration of SNS tokens in the SNS Ledger canister deployed as part
 # of the SNS.
 Token:
     # The name of the token issued by the SNS ledger.
-    name: Sneed DAO
+    # Must be a string of 4 to 255 bytes without leading or trailing spaces.
+    name: DOGMI
+
 
     # The symbol of the token issued by the SNS Ledger.
-    symbol: SNEED
+    # Must be a string of 3 to 10 bytes without leading or trailing spaces.
+    symbol: DOGMI
+
 
     # SNS ledger transaction fee.
-    transaction_fee: 1000 e8s
+    transaction_fee: 50 tokens
 
-    # Path to the SNS token logo 
+
+    # Path to the SNS token logo on your local filesystem. The path is relative
+    # to the configuration file location, unless an absolute path is given.
+    # Must have less than 341,334 bytes. The only supported format is PNG.
     logo: logo.png
+
 
 # Configures SNS proposal-related fields. These fields define the initial values
 # for some of the nervous system parameters related to SNS proposals. This will
@@ -130,7 +196,8 @@ Token:
 Proposals:
     # The cost of making an SNS proposal that is rejected by the SNS neuron
     # holders. This field is specified as a token. For example: "1 token".
-    rejection_fee: 0.1 token
+    rejection_fee: 15_000 token
+
 
     # The initial voting period of an SNS proposal. A proposal's voting period
     # may be increased during its lifecycle due to the wait-for-quiet algorithm
@@ -138,15 +205,36 @@ Proposals:
     # "4 days".
     initial_voting_period: 4 days
 
+
     # The wait-for-quiet algorithm extends the voting period of a proposal when
     # there is a flip in the majority vote during the proposal's voting period.
+    #
+    # Without this, there could be an incentive to vote right at the end of a
+    # proposal's voting period, in order to reduce the chance that people will
+    # see and have time to react to that.
+    #
+    # If this value is set to 1 day, then a change in the majority vote at the
+    # end of a proposal's original voting period results in an extension of the
+    # voting period by an additional day. Another change at the end of the
+    # extended period will cause the voting period to be extended by another
+    # half-day, etc.
+    #
+    # The total extension to the voting period will never be more than twice
+    # this value.
+    #
+    # For more information, please refer to
+    # https://wiki.internetcomputer.org/wiki/Network_Nervous_System#Proposal_decision_and_wait-for-quiet
+    #
+    # This field is specified as a duration. For example: "1 day".
     maximum_wait_for_quiet_deadline_extension: 1 day
+
 
 # Configuration of SNS voting.
 Neurons:
     # The minimum amount of SNS tokens to stake a neuron. This field is specified
     # as a token. For instance, "1 token".
-    minimum_creation_stake: 0.01 tokens
+    minimum_creation_stake: 100 tokens
+
 
 # Configuration of SNS voting.
 Voting:
@@ -159,6 +247,7 @@ Voting:
     # Users cannot access the SNS tokens used to stake neurons (until the neuron
     # is dissolved). This field is specified as a duration. For example: "6 months".
     minimum_dissolve_delay: 1 month
+
 
     # Configuration of voting power bonuses that are applied to neurons to
     # incentivize alignment with the best interest of the DAO. Note, these
@@ -189,13 +278,14 @@ Voting:
             # This parameter sets the maximum dissolve delay a neuron can have.
             # When reached, the maximum dissolve delay bonus will be applied.
             # This field is specified as a duration. For example: "8 years".
-            duration: 6 months
+            duration: 2 years
             # If a neuron's dissolve delay is `duration`, its voting power will
             # be increased by the dissolve delay `bonus` amount. 
             # This field is specified as a percentage. For instance, 
             # a value of "100%" means that the voting power will be doubled
             # (multiplied by 2).
             bonus: 100%
+
 
         # Users with neurons staked in the non-dissolving state for a long
         # period of time are incentivized to take the long-term interests of
@@ -222,13 +312,14 @@ Voting:
             # the maximum age bonus. Once this age is reached, the neuron will
             # continue to age, but no more bonus will be applied. This field
             # is specified as a duration. For example: "2 years".
-            duration: 1 year
+            duration: 1 years
             # If a neuron's age is `duration` or older, its voting power will be
             # increased by this age`bonus` amount. 
             # This field is specified as a percentage. For instance, 
             # a value of "25%" means that the voting power will increase by a quarter
             # (multiplied by 1.25).
-            bonus: 25%
+            bonus: 10%
+
 
     # Configuration of SNS voting reward parameters.
     #
@@ -251,13 +342,15 @@ Voting:
     RewardRate:
         # The initial reward rate at which the SNS voting rewards will increase
         # per year. This field is specified as a percentage. For example: "15%".
-        initial: 0%
+        initial: 1.3%
+
 
         # The final reward rate at which the SNS voting rewards will increase
         # per year. This rate is reached after `transition_duration` and remains
         # at this level unless changed by an SNS proposal. This field is
         # specified as a percentage. For example: "5%".
-        final: 0%
+        final: 1.3%
+
 
         # The voting reward rate falls quadratically from `initial` to `final`
         # over the time period defined by `transition_duration`.
@@ -265,7 +358,8 @@ Voting:
         # Values of 0 result in the reward rate always being `final`.
         #
         # This field is specified as a duration. For example: "8 years".
-        transition_duration: 0 years
+        transition_duration: 1 years
+
 
 # Configuration of the initial token distribution of the SNS. You can configure
 # how SNS tokens are distributed in each of the three groups:
@@ -295,37 +389,43 @@ Distribution:
     #    stake: 1_000 tokens
     #    memo: 0
     #    dissolve_delay: 2 years
-    #    vesting_period: 4 years
+    #    vesting_period: 0 years
     Neurons:
         # For the actual SNS launch, you should replace this with one or more
         # principals of your intended genesis neurons.
         #
         # For testing, propose_sns.sh will fill this in automatically.
-        - principal: umo43-o3yqa-363iw-wroso-jm5az-kmfp2-rdzoj-q7il2-zfhcj-l35r7-oqe #NNS -> my canister
-          stake: 500 tokens
+        - principal: saw7k-3vflg-gg6ci-plkdc-3lhsh-huley-llpjr-fqjfm-bhxl5-34evi-iae
+          stake: 197_357_575.542 tokens
           memo: 0
-          dissolve_delay: 1 months
-          vesting_period: 8 months
+          dissolve_delay: 2 years
+          vesting_period: 0 years
+        - principal: f2zwe-vyryt-wwd37-kwtrt-574hm-6ce6a-kxcmj-jspmw-dvwfk-pcg4g-tqe
+          stake: 197_357_575.542 tokens
+          memo: 0
+          dissolve_delay: 2 years
+          vesting_period: 0 years
     # The initial SNS token balances of the various canisters of the SNS.
     InitialBalances:
         # The initial SNS token balance of the SNS Governance canister is known
         # as the treasury. This is initialized in a special sub-account, as the
         # main account of Governance is the minting account of the SNS Ledger.
-        # This field is specified as a token. For instance, "1 token".
-        governance: 8_500 tokens
+        governance: 23_041_496_944.562 tokens
+
 
         # The initial SNS token balance of the Swap canister is what will be
         # available for the decentralization swap. These tokens will be swapped
-        # for ICP. This field is specified as a token. For instance, "1 token".
-        swap: 1_000 tokens
+        # for ICP.
+        swap: 1_233_484_847.139 tokens
+
 
     # Checksum of the total number of tokens distributed in this section.
-    # This field is specified as a token. For instance, "1 token".
-    #          1_000    (neuron)
-    #      2 million    (governance)
-    # + 500 thousand    (swap)
+    #     23 million    (dev neuron)
+    #     52 million    (governance)
+    # +   25 million    (swap)
     # --------------
-    total: 10_000 tokens
+    total: 24_669_696_942.785 tokens
+
 
 # Configuration of the decentralization swap parameters. Choose these parameters
 # carefully, if a decentralization swap fails, the SNS will restore the dapp
@@ -337,13 +437,15 @@ Swap:
     # to the deadline or the maximum target being reached, and if there are less
     # than `minimum_participants` (here, only direct participants are counted),
     # the swap will be committed.
-    minimum_participants: 10
+    minimum_participants: 100
+
 
     # Minimum amount of ICP from direct participants. This amount is required for
     # the swap to succeed. If this amount is not achieved, the swap will be
     # aborted (instead of committed) when the due date/time occurs.
     # Must be smaller than or equal than `maximum_direct_participation_icp`.
-    minimum_direct_participation_icp: 100 tokens
+    minimum_direct_participation_icp: 7_000 tokens
+
 
     # Maximum amount of ICP from direct participants. If this amount is achieved,
     # the swap will finalize immediately, without waiting for the due date/time;
@@ -353,15 +455,18 @@ Swap:
     # Must be at least `min_participants * minimum_direct_participation_icp`.
     maximum_direct_participation_icp: 30_000 tokens
 
+
     # The minimum amount of ICP that each participant must contribute
     # to participate. This field is specified as a token. For instance,
     # "1 token".
     minimum_participant_icp: 1 tokens
 
+
     # The maximum amount of ICP that each participant may contribute
     # to participate. This field is specified as a token. For instance,
     # "1 token".
-    maximum_participant_icp: 3_000 tokens
+    maximum_participant_icp: 1_000 tokens
+
 
     # The text that swap participants must confirm before they may participate
     # in the swap.
@@ -372,20 +477,15 @@ Swap:
     #     I confirm my understanding of the responsibilities and risks
     #     associated with participating in this token swap.
 
+
     # A list of countries from which swap participation should not be allowed.
     #
     # This field is optional. By default, participants from all countries
     # are allowed.
     #
     # Each list element must be an ISO 3166-1 alpha-2 country code.
-    restricted_countries:
-      - US
-      - KP
-      - CU
-      - SD
-      - SY
-      - IR
-      - VE
+    # restricted_countries:
+    #     - AQ  # Antarctica
 
 
     # Configuration of the vesting schedule of the neuron basket, i.e., the SNS
@@ -398,6 +498,7 @@ Swap:
         # This value should thus be greater than or equal to `2`.
         events: 2
 
+
         # The interval at which the schedule will be increased per event. The
         # first neuron in the basket will be unlocked with zero dissolve delay.
         # Each other neuron in the schedule will have its dissolve delay
@@ -409,7 +510,8 @@ Swap:
         # neurons. While neuron basket neurons do not use `vesting_period`, they
         # have a vesting schedule. This field is specified as a duration. For
         # example: "1 month".
-        interval: 1 month
+        interval: 1 second
+
 
     # Absolute time of day when the decentralization swap is supposed to start.
     #
@@ -437,10 +539,12 @@ Swap:
     #
     # start_time: 23:30 UTC  # Intentionally commented out for testing.
 
+
     # The duration of the decentralization swap. When `start_time` is calculated
     # during CreateServiceNervousSystem proposal execution, this `duration` will
     # be added to that absolute time and set as the swap's deadline.
-    duration: 7 days
+    duration: 10 days
+
 
     # Whether Neurons' Fund participation is requested.
     neurons_fund_participation: false

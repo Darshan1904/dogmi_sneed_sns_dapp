@@ -1,0 +1,129 @@
+:root {
+  --primary-color: #f8b13a;
+  --secondary-color: #3aee6f;
+  --background-color: #131416;
+  --text-color: rgba(255, 255, 255, 0.87);
+  --disabled-color: #666666;
+}
+
+body {
+  font-family: "Fira Code", monospace;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: max-content;
+}
+
+img {
+  width: 200px;
+  height: auto;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+label {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+#convert{
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+#subaccount{
+  display: none;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:disabled,
+input[type="button"]:disabled {
+  background-color: var(--disabled-color);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.inactive button,
+.inactive input[type="button"] {
+  background-color: var(--disabled-color);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 20px;
+}
+
+img.loading-gif {
+  width: 24px;
+  height: 24px;
+}
+
+p {
+  font-size: 16px;
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+.highlight {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

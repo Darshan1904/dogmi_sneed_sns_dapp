@@ -1,8 +1,7 @@
-import { sneed_dapp_backend } from "../../declarations/sneed_dapp_backend";
+import { dogmi_sneed_dapp_backend } from "../../declarations/dogmi_sneed_dapp_backend";
 import { Principal } from "@dfinity/principal";
 
 var d8 = Number(100000000);
-var d12 = Number(1000000000000);
 
 function toJsonString(o) {
   return JSON.stringify(o, (key, value) =>
@@ -75,17 +74,17 @@ document.getElementById("convert").addEventListener("click", async (e) => {
 
   button.setAttribute("disabled", true);
 
-  document.getElementById("result").innerHTML = "<img src='loading-gif.gif' width='48' height='48' />";
+  document.getElementById("result").innerHTML = "<img src='loading-gif.gif' class='loading-gif' />";
 
-  const result = await sneed_dapp_backend.convert_account(account);
+  const result = await dogmi_sneed_dapp_backend.convert_account(account);
 
   const ok = result["Ok"];
   if (ok) {
 
     const txid = ok;
-    const url = "https://dashboard.internetcomputer.org/sns/zxeu2-7aaaa-aaaaq-aaafa-cai/transaction/" + txid;
-    const link = "<a href='" + url + "' target='_blank'>" + txid + "</a>"
-    document.getElementById("result").innerHTML = "Converted in transaction: " + link;
+    // const url = "https://dashboard.internetcomputer.org/sns/zxeu2-7aaaa-aaaaq-aaafa-cai/transaction/" + txid;
+    // const link = "<a href='" + url + "' target='_blank'>" + txid + "</a>"
+    document.getElementById("result").innerHTML = "Converted";
 
   } else {
 
@@ -135,9 +134,9 @@ document.querySelector("form").addEventListener("submit", async (e) => {
 
   button.setAttribute("disabled", true);
 
-  document.getElementById("balance").innerHTML = "<img src='loading-gif.gif' width='48' height='48' />";
+  document.getElementById("balance").innerHTML = "<img src='loading-gif.gif' class='loading-gif'/>";
 
-  const result = await sneed_dapp_backend.get_account(account);
+  const result = await dogmi_sneed_dapp_backend.get_account(account);
     
   const ok = result["Ok"];
   if (ok) {
@@ -152,7 +151,9 @@ document.querySelector("form").addEventListener("submit", async (e) => {
 
     }
 
-    document.getElementById("balance").innerHTML = balance + " SNEED";
+    document.getElementById("balance").innerHTML = `Old(non-SNS) DOGMI : ${toJsonString((balance)*(10000))}
+        <br>
+                                                     New(SNS) DOGMI(Convertable) : ${toJsonString(balance)}`;
 
   } else {
 
@@ -165,10 +166,11 @@ document.querySelector("form").addEventListener("submit", async (e) => {
   return false;
 });
 
-let status = await sneed_dapp_backend.get_status();
+let status = await dogmi_sneed_dapp_backend.get_status();
 let active = status["active"];
 if (active) {
   document.getElementById("submit_button").removeAttribute("disabled"); 
+  document.getElementById("convert").removeAttribute("disabled"); 
   document.getElementById("dapp_status").innerHTML = "Active."; 
   document.getElementById("dapp_id").innerText = status["canister_id"]; 
   document.getElementById("main_div").setAttribute("class", "active");   
