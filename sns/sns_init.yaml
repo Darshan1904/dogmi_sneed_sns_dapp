@@ -398,13 +398,13 @@ Distribution:
         - principal: saw7k-3vflg-gg6ci-plkdc-3lhsh-huley-llpjr-fqjfm-bhxl5-34evi-iae
           stake: 197_357_575.542 tokens
           memo: 0
-          dissolve_delay: 2 years
-          vesting_period: 0 years
+          dissolve_delay: 1 month
+          vesting_period: 2 years
         - principal: f2zwe-vyryt-wwd37-kwtrt-574hm-6ce6a-kxcmj-jspmw-dvwfk-pcg4g-tqe
           stake: 197_357_575.542 tokens
           memo: 0
-          dissolve_delay: 2 years
-          vesting_period: 0 years
+          dissolve_delay: 27 days
+          vesting_period: 2 years
     # The initial SNS token balances of the various canisters of the SNS.
     InitialBalances:
         # The initial SNS token balance of the SNS Governance canister is known
@@ -510,7 +510,7 @@ Swap:
         # neurons. While neuron basket neurons do not use `vesting_period`, they
         # have a vesting schedule. This field is specified as a duration. For
         # example: "1 month".
-        interval: 1 second
+        interval: 1 month
 
 
     # Absolute time of day when the decentralization swap is supposed to start.
