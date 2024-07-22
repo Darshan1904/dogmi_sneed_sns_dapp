@@ -10,4 +10,4 @@ To install and run locally:
     dfx deploy 
 
 
-We have forked the https://github.com/icsneed/sneed_sns_dapp and made the few chnages based on out needs.
+We have forked the https://github.com/icsneed/sneed_sns_dapp and made a few changes based on the DOGMI SNS configuration.
