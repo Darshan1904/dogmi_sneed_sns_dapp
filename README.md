@@ -172,12 +172,12 @@ To install and run the project locally:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/sagcryptoicp/sneed_sns_dapp.git
+   git clone https://github.com/sagcryptoicp/dogmi_sneed_sns_dapp.git
    ```
    
 2. Navigate to the project directory:
    ```bash
-   cd sneed_sns_dapp
+   cd dogmi_sneed_sns_dapp
    ```
 
 3. Install dependencies:
