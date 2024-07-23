@@ -175,7 +175,9 @@ if (active) {
   document.getElementById("dapp_id").innerText = status["canister_id"]; 
   document.getElementById("dapp_id_warn").innerText = status["canister_id"]; 
   document.getElementById("main_div").setAttribute("class", "active");   
+  document.getElementById("test_version").innerText = "";
 } else {
-  document.getElementById("dapp_status").innerHTML = "InActive.";   
+  document.getElementById("dapp_status").innerHTML = "Inactive.";   
   document.getElementById("main_div").setAttribute("class", "inactive");   
+  document.getElementById("test_version").innerText = "(Test version original app will be deployed after sns launch)";
 }
