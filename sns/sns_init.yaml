@@ -91,7 +91,7 @@ NnsProposal:
 
     # The HTTPS address of additional content required to evaluate the NNS
     # proposal.
-    url: "https://forum.dfinity.org/t/dogmi-sns-dao-launch/32060"
+    url: "https://forum.dfinity.org/t/upcoming-dogmi-sns-sale/33440"
 
 
     # The description of the proposal. Must be a string of 10 to 2,000 bytes.
@@ -112,9 +112,9 @@ NnsProposal:
 
         Token distribution:
 
-        79.39%: Held by the community, airdropped post-SNS via 10000:1 ratio swap
-        5%: All Liquid, SNS Swap, 1 neuron with no dissolve delay
-        1.6%: Allocated to the DOGMI team, locked for 6 months
+        79.39%: Held by the community, airdropped post-SNS via 10000:1 ratio swap.
+        5%: SNS Swap, 2 neurons with 1 month dissolve delay.
+        1.6%: Allocated to the DOGMI team, vested over 2 years.
         9.01%: Reserved for the SNS Treasury & under control of the DAO.
         5%: Reserved for future SNS sales, extra burning, or other future purposes.
 
@@ -124,7 +124,7 @@ NnsProposal:
 
         # Governance
 
-        Each decentralization sale participant will receive their tokens in 2 liquid neuron.
+        Each decentralization sale participant will receive their tokens into two 1 month dissolve delay neuron.
 
         # Future Steps
 

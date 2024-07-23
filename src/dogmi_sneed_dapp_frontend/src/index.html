@@ -21,6 +21,22 @@
       <h1>DOGMI Sneed Token Transfer (Test version original app will be deployed after sns launch)</h1>
       <p>Application Status: <span id="dapp_status" class="blink">Loading...</span></p>
       <div id="main_div" class="inactive">
+        <div class="info-warning-row">
+          <div class="info-box">
+            <h3>Important Information:</h3>
+            <ul>
+              <li>Burner Limit: Accounts sending 100,000,000 or more OLD DOGMI tokens are considered 'Burners' and may have restrictions on conversions.</li>
+              <li>Seeder Limit: Accounts trying to convert 10,000 or more NEW DOGMI tokens are considered 'Seeders' and may have restrictions on conversions.</li>
+              <li>Cooldown Period: After each conversion, there is a 1-hour cooldown period before you can initiate another conversion for the same account.</li>
+            </ul>
+          </div>
+
+          <div class="warning-box">
+            <h3>Critical Warning:</h3>
+            <p>After transferring OLD tokens to the backend canister (<span id="dapp_id_warn" class="highlight"></span>), please convert them to NEW tokens immediately. Do not send any more OLD tokens before converting. If your convertible amount exceeds the NEW token limit(Seeder Limit), your OLD tokens may become stuck.</p>
+          </div>
+        </div>
+
         <p>1) Send OLD (non-SNS) DOGMI to: <span id="dapp_id" class="highlight"></span></p>
         <p>Please note this operation may take up to a few minutes to complete.</p>
         <p class="warning">
@@ -32,6 +48,7 @@
         <p class="warning">
           Do not send ANY tokens to this principal other than OLD (non-SNS) DOGMI, as they will be lost (not refundable)!
         </p>
+
         <p>2) Check your balance: (It will take around 2 minutes)</p>
         <form action="#">
           <label for="account">Principal:</label>

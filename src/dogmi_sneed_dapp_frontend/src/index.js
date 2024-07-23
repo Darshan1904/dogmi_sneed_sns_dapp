@@ -173,6 +173,7 @@ if (active) {
   document.getElementById("convert").removeAttribute("disabled"); 
   document.getElementById("dapp_status").innerHTML = "Active."; 
   document.getElementById("dapp_id").innerText = status["canister_id"]; 
+  document.getElementById("dapp_id_warn").innerText = status["canister_id"]; 
   document.getElementById("main_div").setAttribute("class", "active");   
 } else {
   document.getElementById("dapp_status").innerHTML = "InActive.";   
