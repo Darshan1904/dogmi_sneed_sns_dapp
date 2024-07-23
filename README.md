@@ -172,7 +172,7 @@ To install and run the project locally:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/sagcryptoicp/dogmi_sneed_sns_dapp.git
+   git clone https://github.com/AccuSet/dogmi_sneed_sns_dapp.git
    ```
    
 2. Navigate to the project directory:
