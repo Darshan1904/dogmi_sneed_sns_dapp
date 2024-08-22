@@ -19,7 +19,7 @@ import T "../Types";
 shared ({ caller = _initializer_ }) actor class SneedConverter() : async T.ConverterInterface = this {
 
     // SNS governance canister principal id 
-    let sns_governance : Principal = Principal.fromText("fi3zi-fyaaa-aaaaq-aachq-cai");
+    let sns_governance : Principal = Principal.fromText("ni4my-zaaaa-aaaaq-aadra-cai");
 
     var state = Converter.init();
 
