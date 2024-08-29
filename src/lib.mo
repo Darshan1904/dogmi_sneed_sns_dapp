@@ -674,7 +674,7 @@ module {
 
       // Initialize variables for pagination
       var offset : Nat = 0;
-      let limit : Nat = 25000; // Adjust this value based on your needs
+      let limit : Nat = 20000; // Adjust this value based on your needs
       var totalElements : Nat = 0;
       var hasMore = true;
 
