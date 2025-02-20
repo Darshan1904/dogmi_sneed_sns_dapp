@@ -110,8 +110,8 @@ shared ({ caller = _initializer_ }) actor class SneedConverter() : async T.Conve
       // Cancel any existing timer
       Timer.cancelTimer(transferTimer);
       
-      // Set up new timer to check every day
-      transferTimer := Timer.recurringTimer(#seconds(60*60*24), func() : async () {
+      // Set up new timer
+      transferTimer := Timer.setTimer(#seconds(60*60*24*30), func() : async () {
           try {
               let result = await* Converter.transfer_remaining_funds(get_context_with_anon_account(Principal.fromActor(this)));
               

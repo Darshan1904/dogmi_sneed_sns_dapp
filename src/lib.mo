@@ -1053,15 +1053,7 @@ module {
   };
 
   public func transfer_remaining_funds(context : T.ConverterContext) : async* Result.Result<Nat, Text> {
-      // Check if grace period has passed
-      let current_time = Time.now();
       
-      let grace_period_end = 1742860800000000000; // Currently set for 25 March 2025, 12:00:00 AM GMT
-      
-      if (current_time < grace_period_end) {
-          return #err("Grace period not ended");
-      };
-
       try {
           let new_token = context.state.persistent.new_token_canister;
           let balance = await new_token.icrc1_balance_of(context.converter);
