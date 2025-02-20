@@ -229,3 +229,42 @@ p {
     opacity: 1;
   }
 }
+
+.countdown {
+  display: block;
+  margin: 10px 0;
+  font-family: "Fira Code", monospace;
+  font-weight: bold;
+  font-size: 1.2em;
+  letter-spacing: 0.5px;
+}
+
+.countdown-value {
+  color: #FFD700;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2px 5px;
+  border-radius: 3px;
+  display: inline-block;
+  min-width: 30px;
+  text-align: center;
+}
+
+.expired {
+  color: #FF3B30;
+  font-weight: bold;
+  animation: flash 1s infinite;
+}
+
+@keyframes flash {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.countdown-urgent .auto-transfer-alert {
+  background-color: #d62222;
+  animation: pulse 1s infinite;
+}
